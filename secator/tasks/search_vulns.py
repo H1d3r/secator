@@ -2,7 +2,7 @@ from urllib.parse import urlparse
 
 
 from secator.decorators import task
-from secator.definitions import (STRING, OPT_NOT_SUPPORTED, HEADER,
+from secator.definitions import (OPT_NOT_SUPPORTED, HEADER,
 								 DELAY, FOLLOW_REDIRECT, PROXY, RATE_LIMIT, RETRIES,
 								 THREADS, TIMEOUT, USER_AGENT)
 from secator.output_types import Vulnerability, Exploit, Warning
@@ -14,7 +14,6 @@ from secator.serializers import JSONSerializer
 class search_vulns(Vuln):
 	"""Search for known vulnerabilities in software by product name or CPE."""
 	cmd = 'search_vulns'
-	input_types = [STRING]
 	output_types = [Vulnerability, Exploit]
 	tags = ['vuln', 'recon']
 	input_flag = '-q'
@@ -50,7 +49,7 @@ class search_vulns(Vuln):
 		TIMEOUT: OPT_NOT_SUPPORTED,
 		USER_AGENT: OPT_NOT_SUPPORTED,
 	}
-	install_version = '0.8.3'
+	install_version = '0.8.4'
 	install_cmd = 'pipx install --force search_vulns==[install_version]'
 	install_post = {'*': 'search_vulns -u'}
 	github_handle = 'ra1nb0rn/search_vulns'
